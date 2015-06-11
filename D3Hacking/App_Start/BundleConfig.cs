@@ -25,6 +25,8 @@ namespace D3Hacking
 
       bundles.Add(new ScriptBundle("~/bundles/d3").Include("~/Scripts/d3.min.js"));
 
+      bundles.Add(new ScriptBundle("~/bundles/appJS").Include("~/Scripts/wigCharts.js"));
+
       bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));

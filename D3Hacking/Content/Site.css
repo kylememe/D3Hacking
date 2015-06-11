@@ -42,3 +42,33 @@ textarea {
   text-anchor: end;
 }
 
+
+.BDchart > .axis path,
+.BDchart > .axis line {
+	fill: none;
+	stroke: #eee;
+	stroke-width:2;
+	shape-rendering: crispEdges;
+}
+.BDchart > .axis .tick line {	
+	fill: none;
+	stroke: #999;
+	stroke-width:2;
+}
+.BDchart > path.ideal {
+	 stroke: #eee;
+	 stroke-width:5;
+	 stroke-linecap:round;
+}
+.BDchart > path.actual {
+	 stroke: #91E500;
+	 stroke-width:2;
+	 stroke-linecap:round;
+	 fill: none;
+	 /*fill: rgba(0,0,0,0.1);*/
+}
+.BDchart > .grid .tick {
+    stroke: #eee;
+    opacity: 0.5;
+}
+
