@@ -47,13 +47,13 @@ function initChart() {
     }];
 
     var svg = d3.select("#visualisation"),
-        width = 1000,
-        height = 500,
+        width = 420,
+        height = 210,
         margins = {
-            top: 80,
-            right: 50,
-            bottom: 80,
-            left: 80
+            top: 8,
+            right: 5,
+            bottom: 8,
+            left: 8
         },
         xMin = d3.min(lineDataActual, function (d) {
             return d.x;
@@ -157,6 +157,7 @@ function initChart() {
         .attr("d", lineFunc(lineDataActual))
         .attr("class", "actual");
 
+    /*
     svg.append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
@@ -171,6 +172,7 @@ function initChart() {
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Hours remaining");
+    */
 
 }
 
@@ -183,7 +185,7 @@ $(function () {
 
     DrawBarChart(securityData, "#securityContainer", 420, 20);
     DrawBarChart(dataData, "#dataContainer", 420, 20);
-    DrawBarChart(ITData, "#ITContainer", 420, 20);
+    //DrawBarChart(ITData, "#ITContainer", 420, 20);
     DrawBarChart(opsData, "#OpsContainer", 420, 20);
     initChart();
 
