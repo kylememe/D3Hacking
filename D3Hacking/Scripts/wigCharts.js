@@ -24,31 +24,9 @@
         .text(function (d) { return d; });
 }
 
-function initChart() {
+function initChart(container, lineDataActual, width, height) {    
 
-    var lineDataActual = [{
-        'x': 0,
-        'y': 200
-    }, {
-        'x': 10,
-        'y': 50
-    }, {
-        'x': 20,
-        'y': 180
-    }, {
-        'x': 30,
-        'y': 60
-    }, {
-        'x': 40,
-        'y': 120
-    }, {
-        'x': 50,
-        'y': 30
-    }];
-
-    var svg = d3.select("#visualisation"),
-        width = 420,
-        height = 210,
+    var svg = d3.select(container),        
         margins = {
             top: 8,
             right: 5,
@@ -155,38 +133,52 @@ function initChart() {
 
     svg.append("svg:path")
         .attr("d", lineFunc(lineDataActual))
-        .attr("class", "actual");
-
-    /*
-    svg.append("text")
-        .attr("class", "x label")
-        .attr("text-anchor", "end")
-        .attr("x", width)
-        .attr("y", height - 6)
-        .text("Days");
-
-    svg.append("text")
-        .attr("class", "y label")
-        .attr("text-anchor", "end")
-        .attr("y", 6)
-        .attr("dy", ".75em")
-        .attr("transform", "rotate(-90)")
-        .text("Hours remaining");
-    */
+        .attr("class", "actual");    
 
 }
 
 $(function () {
 
-    var securityData = [5, 10, 15, 20, 25, 30];
-    var dataData = [3, 8, 15, 16, 33, 42];
-    var ITData = [19, 8, 15, 16, 27, 42];
-    var opsData = [45, 40, 35, 30, 25, 20];
+    
+    var securityData = [
+        { 'x': 0, 'y': 200 },
+        { 'x': 10, 'y': 185 },
+        { 'x': 20, 'y': 165 },
+        { 'x': 30, 'y': 43 },
+        { 'x': 40, 'y': 120 },
+        { 'x': 50, 'y': 30 }
+    ];
 
-    DrawBarChart(securityData, "#securityContainer", 420, 20);
-    DrawBarChart(dataData, "#dataContainer", 420, 20);
-    //DrawBarChart(ITData, "#ITContainer", 420, 20);
-    DrawBarChart(opsData, "#OpsContainer", 420, 20);
-    initChart();
+    var dataData = [
+        { 'x': 0, 'y': 200 },
+        { 'x': 10, 'y': 185 },
+        { 'x': 20, 'y': 165 },
+        { 'x': 30, 'y': 43 },
+        { 'x': 40, 'y': 120 },
+        { 'x': 50, 'y': 30 }
+    ];
+
+    var ITData = [
+        { 'x': 0, 'y': 200 },
+        { 'x': 10, 'y': 50 },
+        { 'x': 20, 'y': 180 },
+        { 'x': 30, 'y': 60 },
+        { 'x': 40, 'y': 120 },
+        { 'x': 50, 'y': 30 }
+    ];
+
+    var opsData = [
+        { 'x': 0, 'y': 200 },
+        { 'x': 10, 'y': 101 },
+        { 'x': 20, 'y': 180 },
+        { 'x': 30, 'y': 10 },
+        { 'x': 40, 'y': 120 },
+        { 'x': 50, 'y': 83 }
+    ];
+
+    initChart('#SecurityBurndown', securityData, 420, 210);
+    initChart('#DataBurndown', dataData, 420, 210);
+    initChart('#ITBurndown', ITData, 420, 210);
+    initChart('#OpsBurndown', opsData, 420, 210);
 
 });
