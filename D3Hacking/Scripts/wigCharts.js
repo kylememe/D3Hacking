@@ -24,7 +24,7 @@
         .text(function (d) { return d; });
 }
 
-function initChart(container, lineDataActual, width, height) {    
+function initChart(container, lineDataIdeal, lineDataActual, width, height) {    
 
     var svg = d3.select(container),        
         margins = {
@@ -33,16 +33,16 @@ function initChart(container, lineDataActual, width, height) {
             bottom: 8,
             left: 8
         },
-        xMin = d3.min(lineDataActual, function (d) {
+        xMin = d3.min(lineDataIdeal, function (d) {
             return d.x;
         }),
-        xMax = d3.max(lineDataActual, function (d) {
+        xMax = d3.max(lineDataIdeal, function (d) {
             return d.x;
         }),
-        yMin = d3.min(lineDataActual, function (d) {
+        yMin = d3.min(lineDataIdeal, function (d) {
             return d.y;
         }),
-        yMax = d3.max(lineDataActual, function (d) {
+        yMax = d3.max(lineDataIdeal, function (d) {
             return d.y;
         }),
 
@@ -118,13 +118,12 @@ function initChart(container, lineDataActual, width, height) {
         .interpolate('basis');
 
 
-    var lineDataIdeal = [{
-        'x': xMin,
-        'y': yMax
-    }, {
-        'x': xMax,
-        'y': yMin
-    }];
+    /*
+    var lineDataIdeal = [
+        { 'x': xMin, 'y': yMax }, 
+        { 'x': xMax, 'y': yMin }
+    ];
+    */
 
 
     svg.append("svg:path")
@@ -149,13 +148,45 @@ $(function () {
         { 'x': 50, 'y': 30 }
     ];
 
+    var dataIdealData = [
+        { 'x': 0, 'y': 293 },
+        { 'x': 33, 'y': 0}
+    ]
+
     var dataData = [
-        { 'x': 0, 'y': 200 },
-        { 'x': 10, 'y': 185 },
-        { 'x': 20, 'y': 165 },
-        { 'x': 30, 'y': 43 },
-        { 'x': 40, 'y': 120 },
-        { 'x': 50, 'y': 30 }
+        { 'x': 0, 'y': 293 },
+        { 'x': 1, 'y': 293 },
+        { 'x': 2, 'y': 293 },
+        { 'x': 3, 'y': 293 },
+        { 'x': 4, 'y': 293 },
+        { 'x': 5, 'y': 0 },
+        { 'x': 6, 'y': 0 },
+        { 'x': 7, 'y': 0 },
+        { 'x': 8, 'y': 0 },
+        { 'x': 9, 'y': 0 },
+        { 'x': 10, 'y': 0 },
+        { 'x': 11, 'y': 0 },
+        { 'x': 12, 'y': 0 },
+        { 'x': 13, 'y': 0 },
+        { 'x': 14, 'y': 0 },
+        { 'x': 15, 'y': 0 },
+        { 'x': 16, 'y': 0 },
+        { 'x': 17, 'y': 0 },
+        { 'x': 18, 'y': 0 },
+        { 'x': 19, 'y': 0 },
+        { 'x': 20, 'y': 0 },
+        { 'x': 21, 'y': 0 },
+        { 'x': 22, 'y': 0 },
+        { 'x': 23, 'y': 0 },
+        { 'x': 24, 'y': 0 },
+        { 'x': 25, 'y': 0 },
+        { 'x': 26, 'y': 0 },
+        { 'x': 27, 'y': 0 },
+        { 'x': 28, 'y': 0 },
+        { 'x': 29, 'y': 0 },
+        { 'x': 30, 'y': 0 },
+        { 'x': 31, 'y': 0 },
+        { 'x': 32, 'y': 0 },
     ];
 
     var ITData = [
@@ -176,9 +207,9 @@ $(function () {
         { 'x': 50, 'y': 83 }
     ];
 
-    initChart('#SecurityBurndown', securityData, 420, 210);
-    initChart('#DataBurndown', dataData, 420, 210);
-    initChart('#ITBurndown', ITData, 420, 210);
-    initChart('#OpsBurndown', opsData, 420, 210);
+    //initChart('#SecurityBurndown', securityData, 420, 210);
+    initChart('#DataBurndown', dataIdealData, dataData, 420, 210);
+    //initChart('#ITBurndown', ITData, 420, 210);
+    //initChart('#OpsBurndown', opsData, 420, 210);
 
 });
