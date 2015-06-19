@@ -23,6 +23,14 @@ textarea {
     max-width: 280px;
 }
 
+.bad{
+    background: linear-gradient(to right, rgba(255,0,0,0.3), rgba(255,0,0,0)); 
+}
+
+.good{
+    background: linear-gradient(to right, rgba(0,255,0,0.3), rgba(0,255,0,0)); 
+}
+
 .chart div {
   font: 10px sans-serif;
   background-color: steelblue;
@@ -60,8 +68,7 @@ textarea {
 	 stroke-width:5;
 	 stroke-linecap:round;
 }
-.BDchart > path.actual {
-	 stroke: #91E500;
+.BDchart > path.actual {	 
 	 stroke-width:2;
 	 stroke-linecap:round;
 	 fill: none;

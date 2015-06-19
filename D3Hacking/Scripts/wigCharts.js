@@ -24,7 +24,7 @@
         .text(function (d) { return d; });
 }
 
-function initChart(container, lineDataIdeal, lineDataActual, width, height) {    
+function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, height) {    
 
     var svg = d3.select(container),        
         margins = {
@@ -115,15 +115,7 @@ function initChart(container, lineDataIdeal, lineDataActual, width, height) {
         .y(function (d) {
             return yRange(d.y);
         })
-        .interpolate('basis');
-
-
-    /*
-    var lineDataIdeal = [
-        { 'x': xMin, 'y': yMax }, 
-        { 'x': xMax, 'y': yMin }
-    ];
-    */
+        .interpolate('basis');    
 
 
     svg.append("svg:path")
@@ -132,20 +124,19 @@ function initChart(container, lineDataIdeal, lineDataActual, width, height) {
 
     svg.append("svg:path")
         .attr("d", lineFunc(lineDataActual))
-        .attr("class", "actual");    
+        .attr("class", "actual")
+        .attr("stroke", lineColor);
 
 }
 
 $(function () {
 
-    
-    var securityData = [
-        { 'x': 0, 'y': 200 },
-        { 'x': 10, 'y': 185 },
-        { 'x': 20, 'y': 165 },
-        { 'x': 30, 'y': 43 },
-        { 'x': 40, 'y': 120 },
-        { 'x': 50, 'y': 30 }
+    var securityIdealData = [
+        { 'x': 0, 'y': 500 },
+        { 'x': 24, 'y': 0 }
+    ]
+
+    var securityData = [        
     ];
 
     var dataIdealData = [
@@ -186,30 +177,66 @@ $(function () {
         { 'x': 29, 'y': 0 },
         { 'x': 30, 'y': 0 },
         { 'x': 31, 'y': 0 },
-        { 'x': 32, 'y': 0 },
+        { 'x': 32, 'y': 0 }
     ];
+
+    var ITIdealData = [
+        { 'x': 0, 'y': 210 },
+        { 'x': 46, 'y': 0 }
+    ]
 
     var ITData = [
-        { 'x': 0, 'y': 200 },
-        { 'x': 10, 'y': 50 },
-        { 'x': 20, 'y': 180 },
-        { 'x': 30, 'y': 60 },
-        { 'x': 40, 'y': 120 },
-        { 'x': 50, 'y': 30 }
+        { 'x': 0, 'y': 210 }, // 2/9/2015
+        { 'x': 1, 'y': 210 }, // 2/16/2015
+        { 'x': 2, 'y': 210 }, // 2/23/2015
+        { 'x': 3, 'y': 210 }, // 3/2/2015
+        { 'x': 4, 'y': 210 }, // 3/9/2015
+        { 'x': 5, 'y': 210 }, // 3/16/2015
+        { 'x': 6, 'y': 210 }, // 3/23/2015
+        { 'x': 7, 'y': 210 }, // 3/31/2015
+        { 'x': 8, 'y': 210 }, // 4/7/2015
+        { 'x': 9, 'y': 210 }, // 4/14/2015
+        { 'x': 10, 'y': 204 }, // 4/21/2015
+        { 'x': 11, 'y': 200 }, // 4/28/2015
+        { 'x': 12, 'y': 193}, // 5/5/2015
+        { 'x': 13, 'y': 191 }, // 5/12/2015
+        { 'x': 14, 'y': 191 }, // 5/19/2015
+        { 'x': 15, 'y': 191 }, // 5/26/2015
+        { 'x': 16, 'y': 181 }, // 6/2/2015
+        { 'x': 17, 'y': 148 }, // 6/9/2015
+        { 'x': 18, 'y': 118 } // 6/16/2015        
     ];
+
+    var opsIdealData = [
+        { 'x': 0, 'y': 23 },
+        { 'x': 24, 'y': 0 }
+    ]
 
     var opsData = [
-        { 'x': 0, 'y': 200 },
-        { 'x': 10, 'y': 101 },
-        { 'x': 20, 'y': 180 },
-        { 'x': 30, 'y': 10 },
-        { 'x': 40, 'y': 120 },
-        { 'x': 50, 'y': 83 }
+        { 'x': 0, 'y': 23 }, // 2/9/2015
+        { 'x': 1, 'y': 23 }, // 2/16/2015
+        { 'x': 2, 'y': 23 }, // 2/23/2015
+        { 'x': 3, 'y': 23}, // 3/2/2015
+        { 'x': 4, 'y': 23 }, // 3/9/2015
+        { 'x': 5, 'y': 23 }, // 3/16/2015
+        { 'x': 6, 'y': 23 }, // 3/23/2015
+        { 'x': 7, 'y': 23 }, // 3/31/2015
+        { 'x': 8, 'y': 22 }, // 4/7/2015
+        { 'x': 9, 'y': 22 }, // 4/14/2015
+        { 'x': 10, 'y': 22 }, // 4/21/2015
+        { 'x': 11, 'y': 21 }, // 4/28/2015
+        { 'x': 12, 'y': 21 }, // 5/5/2015
+        { 'x': 13, 'y': 21 }, // 5/12/2015
+        { 'x': 14, 'y': 21 }, // 5/19/2015
+        { 'x': 15, 'y': 19 }, // 5/26/2015
+        { 'x': 16, 'y': 19 }, // 6/2/2015
+        { 'x': 17, 'y': 19 }, // 6/9/2015
+        { 'x': 18, 'y': 19 } // 6/16/2015
     ];
 
-    //initChart('#SecurityBurndown', securityData, 420, 210);
-    initChart('#DataBurndown', dataIdealData, dataData, 420, 210);
-    //initChart('#ITBurndown', ITData, 420, 210);
-    //initChart('#OpsBurndown', opsData, 420, 210);
+    initChart('#SecurityBurndown', securityIdealData, securityData, '#91E500', 420, 210);
+    initChart('#DataBurndown', dataIdealData, dataData, '#91E500', 420, 210);
+    initChart('#ITBurndown', ITIdealData, ITData, '#91E500', 420, 210);
+    initChart('#OpsBurndown', opsIdealData, opsData, 'red', 420, 210);
 
 });
