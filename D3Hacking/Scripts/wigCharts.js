@@ -132,11 +132,20 @@ function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, h
 $(function () {
 
     var securityIdealData = [
-        { 'x': 0, 'y': 500 },
-        { 'x': 24, 'y': 0 }
+        { 'x': 0, 'y': 210 },
+        { 'x': 19, 'y': 0 }
     ]
 
-    var securityData = [        
+    var securityData = [
+        { 'x': 0, 'y': 210 },
+        { 'x': 1, 'y': 205 },
+        { 'x': 2, 'y': 204 },
+        { 'x': 3, 'y': 204 },
+        { 'x': 4, 'y': 201 },
+        { 'x': 5, 'y': 198 },
+        { 'x': 6, 'y': 192 },
+        { 'x': 7, 'y': 186 },
+        { 'x': 8, 'y': 177 }
     ];
 
     var dataIdealData = [
@@ -204,7 +213,11 @@ $(function () {
         { 'x': 15, 'y': 191 }, // 5/26/2015
         { 'x': 16, 'y': 181 }, // 6/2/2015
         { 'x': 17, 'y': 148 }, // 6/9/2015
-        { 'x': 18, 'y': 118 } // 6/16/2015        
+        { 'x': 18, 'y': 118 }, // 6/16/2015 
+        { 'x': 19, 'y': 111 },
+        { 'x': 20, 'y': 104 },
+        { 'x': 21, 'y': 102 },
+
     ];
 
     var opsIdealData = [
@@ -231,10 +244,13 @@ $(function () {
         { 'x': 15, 'y': 17 }, // 5/26/2015
         { 'x': 16, 'y': 17 }, // 6/2/2015
         { 'x': 17, 'y': 17 }, // 6/9/2015
-        { 'x': 18, 'y': 17 } // 6/16/2015
+        { 'x': 18, 'y': 17 }, // 6/16/2015
+        { 'x': 19, 'y': 17 },
+        { 'x': 20, 'y': 17 },
+        { 'x': 21, 'y': 17 }
     ];
 
-    initChart('#SecurityBurndown', securityIdealData, securityData, '#91E500', 420, 210);
+    initChart('#SecurityBurndown', securityIdealData, securityData, 'red', 420, 210);
     initChart('#DataBurndown', dataIdealData, dataData, '#91E500', 420, 210);
     initChart('#ITBurndown', ITIdealData, ITData, '#91E500', 420, 210);
     initChart('#OpsBurndown', opsIdealData, opsData, 'red', 420, 210);
