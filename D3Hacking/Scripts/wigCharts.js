@@ -1,37 +1,11 @@
-﻿function DrawBarChart(data, container, width, barHeight) {
-    var x = d3.scale.linear()
-    .domain([0, d3.max(data)])
-    .range([0, width]);
-
-    var chart = d3.select(container)
-        .select(".chart")
-        .attr("width", width)
-        .attr("height", barHeight * data.length);
-
-    var bar = chart.selectAll("g")
-        .data(data)
-        .enter().append("g")
-        .attr("transform", function (d, i) { return "translate(0," + i * barHeight + ")"; });
-
-    bar.append("rect")
-        .attr("width", x)
-        .attr("height", barHeight - 1);
-
-    bar.append("text")
-        .attr("x", function (d) { return x(d) - 3; })
-        .attr("y", barHeight / 2)
-        .attr("dy", ".35em")
-        .text(function (d) { return d; });
-}
-
-function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, height) {    
+﻿function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, height) {    
 
     var svg = d3.select(container),        
         margins = {
-            top: 8,
-            right: 5,
-            bottom: 8,
-            left: 8
+            top: 30,
+            right: 25,
+            bottom: 30,
+            left: 25
         },
         xMin = d3.min(lineDataIdeal, function (d) {
             return d.x;
@@ -58,12 +32,12 @@ function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, h
 
     xAxis = d3.svg.axis()
         .scale(xRange)
-        .tickSubdivide(true),
+        .ticks(0)        
 
     yAxis = d3.svg.axis()
         .scale(yRange)
         .orient("left")
-        .tickSubdivide(true);
+        .ticks(0)        
 
     function make_x_axis() {
         return d3.svg.axis()
@@ -79,7 +53,6 @@ function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, h
             .tickSubdivide(true)
     }
 
-
     svg.append("g")
         .attr("class", "grid")
         .attr("transform", "translate(0," + (height - margins.top) + ")")
@@ -94,7 +67,7 @@ function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, h
         .call(make_y_axis()
             .tickSize((-width) + (margins.right + margins.left), 0, 0)
             .tickFormat("")
-        )
+        )    
 
     svg.append("svg:g")
         .attr("class", "x axis")
@@ -125,7 +98,20 @@ function initChart(container, lineDataIdeal, lineDataActual, lineColor, width, h
     svg.append("svg:path")
         .attr("d", lineFunc(lineDataActual))
         .attr("class", "actual")
-        .attr("stroke", lineColor);
+        .attr("stroke", lineColor);    
+
+    svg.append("text")      
+        .attr("x", width / 2)
+        .attr("y", height - 10)
+        .style("text-anchor", "middle")
+        .text("Time");
+		
+	svg.append("text")		
+		.attr("y", margins.left / 2)
+        .attr("x", (height / 2) * -1)		
+        .attr("text-anchor", "middle")
+		.attr("transform", "rotate(-90)")
+		.text("Work Remaining");
 
 }
 
@@ -234,9 +220,9 @@ $(function () {
         { 'x': 18, 'y': 17 } // 6/16/2015
     ];
 
-    initChart('#SecurityBurndown', securityIdealData, securityData, '#91E500', 420, 210);
-    initChart('#DataBurndown', dataIdealData, dataData, '#91E500', 420, 210);
-    initChart('#ITBurndown', ITIdealData, ITData, '#91E500', 420, 210);
-    initChart('#OpsBurndown', opsIdealData, opsData, 'red', 420, 210);
+    initChart('#SecurityBurndown', securityIdealData, securityData, '#91E500', 450, 225);
+    initChart('#DataBurndown', dataIdealData, dataData, '#91E500', 450, 225);
+    initChart('#ITBurndown', ITIdealData, ITData, '#91E500', 450, 225);
+    initChart('#OpsBurndown', opsIdealData, opsData, 'red', 450, 225);
 
 });
