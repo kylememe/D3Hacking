@@ -119,7 +119,7 @@ $(function () {
 
     var securityIdealData = [
         { 'x': 0, 'y': 210 },
-        { 'x': 19, 'y': 0 }
+        { 'x': 32, 'y': 0 }
     ]
 
     var securityData = [
@@ -139,7 +139,19 @@ $(function () {
         { 'x': 13, 'y': 122 },
         { 'x': 14, 'y': 108 },
         { 'x': 15, 'y': 97 },
-        { 'x': 16, 'y': 82 }
+        { 'x': 16, 'y': 82 },
+        { 'x': 17, 'y': 80 },
+        { 'x': 18, 'y': 79 },
+        { 'x': 19, 'y': 62 },
+        { 'x': 20, 'y': 57 },
+        { 'x': 21, 'y': 52 },
+        { 'x': 22, 'y': 45 },
+        { 'x': 23, 'y': 30 },
+        { 'x': 24, 'y': 25 },
+        { 'x': 25, 'y': 26 },
+        { 'x': 26, 'y': 24 },
+        { 'x': 27, 'y': 23 },
+        { 'x': 28, 'y': 21 }
     ];
 
     var dataIdealData = [
@@ -233,9 +245,10 @@ $(function () {
 
     ];
 
-    initChart('#SecurityBurndown', securityIdealData, securityData, 'red', 450, 225);
+    initChart('#SecurityBurndown', securityIdealData, securityData, '#91E500', 450, 225);
     initChart('#DataBurndown', dataIdealData, dataData, '#91E500', 450, 225);
     initChart('#ITBurndown', ITIdealData, ITData, '#91E500', 450, 225);
-    initChart('#OpsBurndown', opsIdealData, opsData, 'red', 450, 225);
+    //initChart('#OpsBurndown', opsIdealData, opsData, 'red', 450, 225);
 
 });
+
